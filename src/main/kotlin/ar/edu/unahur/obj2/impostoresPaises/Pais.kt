@@ -17,5 +17,5 @@ class Pais (
 
     fun densidadPoblacional() = poblacion / superficie
 
-    fun vecinoMasPoblado() = "Busca al limitrofe mas poblado, si es mas poblado que el que consulta va el limitrofe sino va el que consulta"
+    //fun vecinoMasPoblado() = "Busca al limitrofe mas poblado, si es mas poblado que el que consulta va el limitrofe sino va el que consulta"
 }
