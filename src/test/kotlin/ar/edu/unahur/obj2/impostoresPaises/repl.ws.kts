@@ -1,3 +1,4 @@
+import ar.edu.unahur.obj2.impostoresPaises.Observatorio
 import ar.edu.unahur.obj2.impostoresPaises.RestCountriesAPI
 
 // Algunos ejemplos para que jueguen un poco
@@ -8,3 +9,6 @@ val api = RestCountriesAPI()
 api.buscarPaisesPorNombre("guay")
 
 api.paisConCodigo("CHL")
+
+
+

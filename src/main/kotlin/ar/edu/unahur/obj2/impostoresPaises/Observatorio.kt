@@ -10,19 +10,19 @@ object Observatorio {
         return pais1!!.esLimitrofreDe(pais2!!)
     }
 
-    fun necesitanTraduccion(pais1nombre: String,pais2nombre: String): Boolean{
+    fun necesitanTraduccion(pais1nombre: String,pais2nombre: String): Boolean {
         val pais1 = paises.find { it.nombre == pais1nombre}
         val pais2 = paises.find { it.nombre == pais2nombre}
         return pais1!!.necesitanTraduccionCon(pais2!!)
     }
 
-    fun sonPotencialesAliados(pais1nombre: String,pais2nombre: String): Boolean{
+    fun sonPotencialesAliados(pais1nombre: String,pais2nombre: String): Boolean {
         val pais1 = paises.find { it.nombre == pais1nombre}
         val pais2 = paises.find { it.nombre == pais2nombre}
         return pais1!!.esPotencialAliadosCon(pais2!!)
     }
 
-    fun ISODeLos5paisesConMayorDensidadPoblacional2(): List<String>{
+    fun ISODeLos5paisesConMayorDensidadPoblacional2(): List<String> {
         val listaPaisesAlterna = mutableListOf<Pais>()
         listaPaisesAlterna.addAll(this.paises)
         listaPaisesAlterna.sortedByDescending { it.densidadPoblacional() }
@@ -36,7 +36,15 @@ object Observatorio {
         return listaFinal
     }
 
-    fun continenteConMasPlurinacionales() = ""//Indicar el nombre del continente con más paises plurinacionales.
+    fun continenteConMasPlurinacionales() : Pais? {
+        //Indicar el nombre del continente con más paises plurinacionales.
+        val paisesPlurinacionales = paises.filter { it.esPlurinacional() }
+        return paisesPlurinacionales.maxByOrNull { it.continente }
+    }
 
-    fun promedioDensidadPoblacionalIslas() = 1 //Conocer el promedio de densidad poblacional de los países-isla.
+    fun promedioDensidadPoblacionalIslas() : Int {
+        //Conocer el promedio de densidad poblacional de los países-isla.
+        val paisesConIsla = paises.filter { it.esUnaIsla() }
+        return paisesConIsla.sumBy { it.densidadPoblacional().toInt() } / paisesConIsla.size
+    }
 }
