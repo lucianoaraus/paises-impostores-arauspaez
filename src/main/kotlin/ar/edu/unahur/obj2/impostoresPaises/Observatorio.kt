@@ -26,24 +26,20 @@ object Observatorio {
         val listaPaisesAlterna = mutableListOf<Pais>()
         listaPaisesAlterna.addAll(this.paises)
         listaPaisesAlterna.sortedByDescending { it.densidadPoblacional() }
-        val listaFinal = mutableListOf<String>()
-
-        var i = 0
-        repeat (5) {
-            listaFinal += listaPaisesAlterna[i].codigoISO
-            i += 1
-        }
-        return listaFinal
+        return listaPaisesAlterna.take(5).map { it.codigoISO }
     }
 
-    fun continenteConMasPlurinacionales() : Pais? {
-        //Indicar el nombre del continente con más paises plurinacionales.
-        val paisesPlurinacionales = paises.filter { it.esPlurinacional() }
-        return paisesPlurinacionales.maxByOrNull { it.continente }
+    //Indicar el nombre del continente con más paises plurinacionales.
+    fun cantidadDePlurinacionalesPorContinente(continente: String) =
+        paises.filter { it.continente == continente }.filter { it.esPlurinacional() }.size
+
+    fun continenteConMasPlurinacionales() : String? {
+        val continentes = paises.map {it.continente}.toSet()
+        return continentes.maxByOrNull { cantidadDePlurinacionalesPorContinente(it)}
     }
 
+    //Conocer el promedio de densidad poblacional de los países-isla.
     fun promedioDensidadPoblacionalIslas() : Int {
-        //Conocer el promedio de densidad poblacional de los países-isla.
         val paisesConIsla = paises.filter { it.esUnaIsla() }
         return paisesConIsla.sumBy { it.densidadPoblacional().toInt() } / paisesConIsla.size
     }
