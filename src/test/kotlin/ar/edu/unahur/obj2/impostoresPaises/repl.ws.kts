@@ -6,9 +6,13 @@ import ar.edu.unahur.obj2.impostoresPaises.RestCountriesAPI
 
 val api = RestCountriesAPI()
 
-api.buscarPaisesPorNombre("guay")
+api.buscarPaisesPorNombre("fafa")
 
 api.paisConCodigo("CHL")
+
+
+
+
 
 
 
