@@ -34,7 +34,7 @@ object Observatorio {
         paises.filter { it.continente == continente }.filter { it.esPlurinacional() }.size
 
     fun continenteConMasPlurinacionales() : String? {
-        val continentes = paises.map {it.continente}.toSet()
+        val continentes = paises.map { it.continente }.toSet()
         return continentes.maxByOrNull { cantidadDePlurinacionalesPorContinente(it)}
     }
 
