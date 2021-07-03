@@ -10,6 +10,7 @@ class Pais (
     val idiomas: MutableSet<String>){
 
     var paisesLimitrofes = mutableSetOf<Pais>()
+    //var paisesLimitrofesMapeado = mutableSetOf<Pais>().map { it.nombre } //Solo para pruebas
 
     fun esPlurinacional() = idiomas.size > 1
 
@@ -25,7 +26,7 @@ class Pais (
         else this
     }
 
-    fun esLimitrofreDe(pais: Pais) = paisesLimitrofes.contains(pais)
+    fun esLimitrofreDe(pais: Pais) = paisesLimitrofes.map { it.nombre }.contains(pais.nombre)
 
     fun necesitanTraduccionCon(pais: Pais) = idiomas.intersect(pais.idiomas).isEmpty()
 

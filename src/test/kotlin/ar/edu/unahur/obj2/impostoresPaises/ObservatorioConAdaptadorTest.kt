@@ -1,12 +1,12 @@
 package ar.edu.unahur.obj2.impostoresPaises
 
-/*import io.kotest.core.spec.style.DescribeSpec
+import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.booleans.shouldBeFalse
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 import io.kotest.matchers.shouldBe
 
-class ObservatorioConAdaptadorTest: DescribeSpec({
+/*class ObservatorioConAdaptadorTest: DescribeSpec({
 
     describe("Para 2 paises del Observatorio"){
         it("Argentina y Paraguay son limitrofres"){
