@@ -2,7 +2,7 @@ package ar.edu.unahur.obj2.impostoresPaises
 
 object Adaptador {
 
-    val api: RestCountriesAPI = RestCountriesAPI()
+    var api = RestCountriesAPI()
 
     fun listaPaisesAdaptados() = api.todosLosPaises().map { this.adaptarAPais(it) }
 
@@ -12,7 +12,7 @@ object Adaptador {
             country.name,
             country.alpha3Code,
             country.population,
-            country.area!!,
+            country.area?:0.0,
             country.region,
             adaptarBloqueRegional(country.regionalBlocs),
             adaptarIdiomas(country.languages)
@@ -28,14 +28,14 @@ object Adaptador {
         languages.map { it.name }.toMutableSet()
 
     private fun adaptarLimitrofes(borders: List<String>): MutableSet<Pais> =
-        borders.map { convertirAPaisIsla(api.paisConCodigo(it)) }.toMutableSet()
+        borders.map { convertirAPaisSinLimitrofe(api.paisConCodigo(it)) }.toMutableSet()
 
-    private fun convertirAPaisIsla(country: Country): Pais {
+    private fun convertirAPaisSinLimitrofe(country: Country): Pais {
         return Pais(
             country.name,
             country.alpha3Code,
             country.population,
-            country.area!!,
+            country.area?:0.0,
             country.region,
             adaptarBloqueRegional(country.regionalBlocs),
             adaptarIdiomas(country.languages)

@@ -11,7 +11,6 @@ class ObservatorioConAdaptadorTest: DescribeSpec({
 
     describe("Para 2 paises del Observatorio"){
 
-
         it("Argentina y Paraguay son limitrofres"){
             Observatorio.sonLimitrofes("argentina","paraguay").shouldBeTrue()
         }
@@ -41,15 +40,15 @@ class ObservatorioConAdaptadorTest: DescribeSpec({
     describe("Para el total de paises del Observatorio"){
 
         it("Los ISO de los 5 paises con mayor densidad poblacional"){
-            Observatorio.ISODeLos5paisesConMayorDensidadPoblacional2().shouldContainExactlyInAnyOrder("ARG", "URY", "PRY", "CHI", "BOL")
+            Observatorio.ISODeLos5paisesConMayorDensidadPoblacional2().shouldContainExactlyInAnyOrder("AFG", "ALA", "ALB", "DZA", "ASM")
         }
 
         it("El continente con mas paises plurinacionales"){
-            Observatorio.continenteConMasPlurinacionales().shouldBe("America")
+            Observatorio.continenteConMasPlurinacionales().shouldBe("Africa")
         }
 
         it("El promedio de densidad poblacional de los países-isla"){
-            Observatorio.promedioDensidadPoblacionalIslas().shouldBe(154)
+            Observatorio.promedioDensidadPoblacionalIslas().shouldBe(317)
         }
     }
 })

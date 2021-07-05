@@ -10,7 +10,6 @@ class Pais (
     val idiomas: MutableSet<String>){
 
     var paisesLimitrofes = mutableSetOf<Pais>()
-    //var paisesLimitrofesMapeado = mutableSetOf<Pais>().map { it.nombre } //Solo para pruebas
 
     fun esPlurinacional() = idiomas.size > 1
 

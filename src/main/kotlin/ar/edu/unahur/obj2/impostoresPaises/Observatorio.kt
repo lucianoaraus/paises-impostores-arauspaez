@@ -4,6 +4,7 @@ object Observatorio {
     //Falta: que conoce a todos los países y debe poder responder las consultas que se enuncian a continuación.
     val adaptador = Adaptador
 
+
     //REVISAR
     //fun listaPaisesAdaptados() = adaptador.api.todosLosPaises().map { adaptador.adaptarAPais(it) }
     //private val listaPaisesAdaptados = adaptador.api.todosLosPaises().map { adaptador.adaptarAPais(it) }
