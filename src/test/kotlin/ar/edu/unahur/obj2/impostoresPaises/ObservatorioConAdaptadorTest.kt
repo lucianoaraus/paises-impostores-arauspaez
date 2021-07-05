@@ -3,12 +3,15 @@ package ar.edu.unahur.obj2.impostoresPaises
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.booleans.shouldBeFalse
 import io.kotest.matchers.booleans.shouldBeTrue
+import io.kotest.matchers.collections.shouldBeEmpty
 import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 import io.kotest.matchers.shouldBe
 
-/*class ObservatorioConAdaptadorTest: DescribeSpec({
+class ObservatorioConAdaptadorTest: DescribeSpec({
 
     describe("Para 2 paises del Observatorio"){
+
+
         it("Argentina y Paraguay son limitrofres"){
             Observatorio.sonLimitrofes("argentina","paraguay").shouldBeTrue()
         }
@@ -16,19 +19,19 @@ import io.kotest.matchers.shouldBe
             Observatorio.sonLimitrofes("argentina","nigeria").shouldBeFalse()
         }
 
-        it("Argentina e Inglaterra necesitanTraduccion"){
-            Observatorio.necesitanTraduccion("argentina","inglaterra").shouldBeTrue()
+        it("Argentina y Japón necesitanTraduccion"){
+            Observatorio.necesitanTraduccion("argentina","japan").shouldBeTrue()
         }
         it("Colombia y Peru NO necesitanTraduccion"){
-            Observatorio.necesitanTraduccion("colombia","peru").shouldBeFalse()
+            Observatorio.necesitanTraduccion("colombia","perú").shouldBeFalse()
         }
 
 
         it("Argentina y Bolivia sonPotencialesAliados"){
             Observatorio.sonPotencialesAliados("argentina","bolivia").shouldBeTrue()
         }
-        it("Argentina y Brasil NO sonPotencialesAliados porque necesitan traduccion"){
-            Observatorio.sonPotencialesAliados("argentina","brasil").shouldBeFalse()
+        it("Cabo Verde y Nigeria NO sonPotencialesAliados porque necesitan traduccion"){
+            Observatorio.sonPotencialesAliados("Cabo Verde","Nigeria").shouldBeFalse()
         }
         it("Argentina y Espania NO sonPotencialesAliados porque no comparten bloque regional"){
             Observatorio.sonPotencialesAliados("argentina","españa").shouldBeFalse()
@@ -36,6 +39,7 @@ import io.kotest.matchers.shouldBe
     }
 
     describe("Para el total de paises del Observatorio"){
+
         it("Los ISO de los 5 paises con mayor densidad poblacional"){
             Observatorio.ISODeLos5paisesConMayorDensidadPoblacional2().shouldContainExactlyInAnyOrder("ARG", "URY", "PRY", "CHI", "BOL")
         }
@@ -48,4 +52,4 @@ import io.kotest.matchers.shouldBe
             Observatorio.promedioDensidadPoblacionalIslas().shouldBe(154)
         }
     }
-})*/
+})

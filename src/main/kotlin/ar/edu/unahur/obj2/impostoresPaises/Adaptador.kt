@@ -2,9 +2,9 @@ package ar.edu.unahur.obj2.impostoresPaises
 
 object Adaptador {
 
-    var api = RestCountriesAPI()
+    val api: RestCountriesAPI = RestCountriesAPI()
 
-    fun listaPaisesAdaptados() = api.todosLosPaises().map { adaptarAPais(it) }
+    fun listaPaisesAdaptados() = api.todosLosPaises().map { this.adaptarAPais(it) }
 
 
     fun adaptarAPais(country: Country): Pais{
@@ -54,9 +54,9 @@ object Adaptador {
                     region = "",
                     population = 0,
                     area = 0.0,
-                    borders = listOf(),
+                    emptyList(),
                     languages = listOf(Language("")),
-                    regionalBlocs = listOf()
+                    regionalBlocs = listOf(RegionalBloc("",""))
                 )
             )
         }

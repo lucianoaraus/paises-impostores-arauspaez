@@ -4,6 +4,7 @@ import io.kotest.core.spec.style.DescribeSpec
 import io.mockk.every
 import io.mockk.mockk
 
+//Requerimiento 4
 class APIImpostoraTest: DescribeSpec({
     val ObservatorioImpostor = mockk<Observatorio>()
 
@@ -35,9 +36,9 @@ class APIImpostoraTest: DescribeSpec({
     }
 
     describe("Para el total de paises del Observatorio"){
-        /*it("Los ISO de los 5 paises con mayor densidad poblacional"){
-            every { ObservatorioImpostor.ISODeLos5paisesConMayorDensidadPoblacional2() } returnsMany ("ARG", "URY", "PRY", "CHI", "BOL") //Hay que buscar alguno para devolver lista
-        }*/
+        it("Los ISO de los 5 paises con mayor densidad poblacional"){
+            every { ObservatorioImpostor.ISODeLos5paisesConMayorDensidadPoblacional2() } returns listOf("ARG", "URY", "PRY", "CHI", "BOL")
+        }
 
         it("El continente con mas paises plurinacionales"){
             every { ObservatorioImpostor.continenteConMasPlurinacionales() } returns "America"
