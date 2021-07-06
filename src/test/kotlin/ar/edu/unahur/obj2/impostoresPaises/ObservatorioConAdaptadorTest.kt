@@ -10,7 +10,6 @@ import io.kotest.matchers.shouldBe
 class ObservatorioConAdaptadorTest: DescribeSpec({
 
     describe("Para 2 paises del Observatorio"){
-
         it("Argentina y Paraguay son limitrofres"){
             Observatorio.sonLimitrofes("argentina","paraguay").shouldBeTrue()
         }
@@ -38,7 +37,6 @@ class ObservatorioConAdaptadorTest: DescribeSpec({
     }
 
     describe("Para el total de paises del Observatorio"){
-
         it("Los ISO de los 5 paises con mayor densidad poblacional"){
             Observatorio.ISODeLos5paisesConMayorDensidadPoblacional2().shouldContainExactlyInAnyOrder("AFG", "ALA", "ALB", "DZA", "ASM")
         }
