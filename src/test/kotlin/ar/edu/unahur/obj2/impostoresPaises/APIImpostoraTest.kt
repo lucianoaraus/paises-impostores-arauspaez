@@ -1,60 +1,143 @@
 package ar.edu.unahur.obj2.impostoresPaises
 
 import io.kotest.core.spec.style.DescribeSpec
-import io.mockk.MockKObjectScope
 import io.mockk.every
-import io.mockk.impl.annotations.MockK
 import io.mockk.mockk
-import io.mockk.mockkObject
+
 
 //Requerimiento 4
 class APIImpostoraTest: DescribeSpec({
     val apiImpostora = mockk<RestCountriesAPI>()
     Adaptador.api = apiImpostora
 
-    describe("Para 2 paises del Observatorio"){
-        it("Argentina y Paraguay son limitrofres"){
-            every { Observatorio.sonLimitrofes("argentina","paraguay") } returns true
-        }
-        it("Argentina y Nigeria NO son limitrofes"){
-            every { Observatorio.sonLimitrofes("argentina","nigeria") } returns false
-        }
 
-        it("Argentina e Inglaterra necesitanTraduccion"){
-            every { Observatorio.necesitanTraduccion("argentina","inglaterra") } returns true
-        }
-        it("Colombia y Peru NO necesitanTraduccion"){
-            every { Observatorio.necesitanTraduccion("colombia","peru") } returns false
-        }
-
-
-        it("Argentina y Bolivia sonPotencialesAliados"){
-            every { Observatorio.sonPotencialesAliados("argentina","bolivia") } returns true
-        }
-        it("Argentina y Brasil NO sonPotencialesAliados porque necesitan traduccion"){
-            every { Observatorio.sonPotencialesAliados("argentina","brasil") } returns false
-        }
-        it("Argentina y Espania NO sonPotencialesAliados porque no comparten bloque regional"){
-            every { Observatorio.sonPotencialesAliados("argentina","españa") } returns false
-        }
+    it("buscarPaisesPorNombre") {
+        every { Adaptador.api.buscarPaisesPorNombre("colombia") } returns listOf(
+            Country("colombia",
+                "COL",
+                "bogota",
+                "Americas",
+                51049498,
+                1141748.0,
+                listOf("UNASUR"),
+                listOf(Language("Español")),
+                listOf(RegionalBloc("",""))
+            )
+        )
+        every { Adaptador.api.buscarPaisesPorNombre("cuba") } returns listOf(
+            Country("cuba",
+                "CUB",
+                "La Habana",
+                "Antillas Mayores",
+                11330000,
+                109884.0,
+                listOf("paises centroamericanos"),
+                listOf(Language("Español")),
+                listOf(RegionalBloc("",""))
+            )
+        )
+        every { Adaptador.api.buscarPaisesPorNombre("japon") } returns listOf(
+            Country(
+                "japon",
+                "JAP",
+                "Tokio",
+                "Asia",
+                12615000,
+                377975.0,
+                listOf("pais"),
+                listOf(Language("japones")),
+                listOf(RegionalBloc("",""))
+            )
+        )
     }
 
-    describe("Para el total de paises del Observatorio"){
-        it("Los ISO de los 5 paises con mayor densidad poblacional"){
-            every { Observatorio.ISODeLos5paisesConMayorDensidadPoblacional2() } returns listOf("ARG", "URY", "PRY", "CHI", "BOL")
-        }
-        it("El continente con mas paises plurinacionales"){
-            every { Observatorio.continenteConMasPlurinacionales() } returns "America"
-        }
-        /*it("El promedio de densidad poblacional de los países-isla"){
-            //val paisMock1 = mockk<Pais>()
-            //val paisMock2 = mockk<Pais>()
-            //val paisMock3 = mockk<Pais>()
-            //every { Adaptador.api.todosLosPaises() } returns listOf(paisMock1,paisMock2,paisMock3)
-            //every { Adaptador.listaPaisesAdaptados() } returns listOf(paisMock1,paisMock2,paisMock3)
-            //every { apiImpostora.todosLosPaises() } returns listOf(paisMock1,paisMock2,paisMock3)
-            //every { Observatorio.adaptador.listaPaisesAdaptados().filter { it.esUnaIsla() } } returns listOf(paisMock1,paisMock2,paisMock3)
-            every { Observatorio.promedioDensidadPoblacionalIslas() } returns 154 //TODO: Para que no divida por 0 hay que hacer que la funcion paisesConIsla.size en promedioDensidadPoblacionalIslas retorne != 0
-        }*/
+    it("paisConCodigo"){
+        every { Adaptador.api.paisConCodigo("COL") } returns
+                Country("colombia",
+                    "COL",
+                    "bogota",
+                    "Americas",
+                    51049498,
+                    1141748.0,
+                    listOf("UNASUR"),
+                    listOf(Language("Español")),
+                    listOf(RegionalBloc("",""))
+                )
+
+        every { Adaptador.api.paisConCodigo("CUB") } returns
+                Country("cuba",
+                    "CUB",
+                    "La Habana",
+                    "Antillas Mayores",
+                    11330000,
+                    109884.0,
+                    listOf("paises centroamericanos"),
+                    listOf(Language("Español")),
+                    listOf(RegionalBloc("",""))
+                )
+
+        every { Adaptador.api.buscarPaisesPorNombre("JAP") } returns listOf(
+            Country(
+                "japon",
+                "JAP",
+                "Tokio",
+                "Asia",
+                12615000,
+                377975.0,
+                listOf("pais"),
+                listOf(Language("japones")),
+                listOf(RegionalBloc("",""))
+            )
+        )
     }
+    it("todosLosPaíses") {
+        every{ Adaptador.api.todosLosPaises() } returns listOf(
+            Country(
+                "Cabo Verde",
+                "CPV",
+                "Praia",
+                "Africa",
+                531239,
+                4033.0,
+                emptyList(),
+                listOf(Language("Portuguese")),
+                listOf(RegionalBloc("AU", "African Union"))
+            ),
+            Country(
+                "japon",
+                "JAP",
+                "Tokio",
+                "Asia",
+                12615000,
+                377975.0,
+                listOf("pais"),
+                listOf(Language("japones")),
+                listOf(RegionalBloc("",""))
+            ),
+            Country(
+                "nueva zelanda",
+                "NZL",
+                "Wellington",
+                "paises de oceania",
+                5644334,
+                268838.0,
+                listOf("Paises oceanicos"),
+                listOf(Language("ingles"),Language("maori")),
+                listOf(RegionalBloc("",""))
+            ),
+            Country(
+                "Bolivia (Plurinational State of)",
+                "BOL",
+                "Sucre",
+                "Americas",
+                10985059,
+                1098581.0,
+                listOf("ARG", "BRA", "CHL", "PRY", "PER"),
+                listOf(Language("Spanish"), Language("Aymara"), Language("Quechua")),
+                listOf(RegionalBloc("USAN", "Union of South American Nations"))
+            )
+
+        )
+    }
+
 })
